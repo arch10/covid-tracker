@@ -26,6 +26,8 @@ jobs:
         run: yarn install
       - name: List files
         run: ls
+      - run : git config user.name github-actions
+      - run : git config user.email github-actions@github.com
       - name: Deploy
         run: CI='' yarn run deploy
         
