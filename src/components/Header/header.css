@@ -2,6 +2,8 @@
     display: flex;
     height: 72px;
     width: 100%;
+    position: fixed;
+    top: 0;
     background-color: #f1f1f1;
     align-items: center;
     box-shadow: 0px 1px 25px 0px rgba(0, 0, 0, 0.25);
@@ -19,4 +21,10 @@
     font-weight: 400;
     line-height: 28px;
     color: #212121;
+}
+
+@media only screen and (max-width: 600px) {
+    .header {
+        height: 52px;
+    }
 }

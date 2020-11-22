@@ -13,7 +13,7 @@ if (process.env.NODE_ENV && process.env.NODE_ENV !== "development") {
     level = levels.INFO;
 }
 
-export default {
+const logger = {
     levels: levels,
 
     setLevel: (val) => {
@@ -41,3 +41,5 @@ export default {
         if (level <= 4) console.error("ERROR:", ...args);
     }
 };
+
+export default logger;
