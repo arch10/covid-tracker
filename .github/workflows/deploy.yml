@@ -1,0 +1,16 @@
+name: "Deploy React App to Github Pages"
+description: "Action to automatically deploy the React App to GithHub Pages."
+author: "arch10"
+branding:
+  color: "purple"
+  icon: "cloud-lightning"
+
+runs:
+  using: "composite"
+  steps:
+    - run: git --work-tree build add --all
+      shell: bash
+    - run: git --work-tree build commit -m 'deploy files'
+      shell: bash
+    - run: git push origin HEAD:gh-pages --force
+      shell: bash
