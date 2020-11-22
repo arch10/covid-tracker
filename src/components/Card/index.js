@@ -6,8 +6,8 @@ import { numberFormatter } from "../../util";
 
 Card.propTypes = {
     title: PropTypes.string,
-    subtitle: PropTypes.number,
-    value: PropTypes.number,
+    subtitle: PropTypes.string,
+    value: PropTypes.string,
     active: PropTypes.bool,
     type: PropTypes.oneOf(["active", "confirm", "recovered", "deaths"]),
     onClick: PropTypes.func
@@ -15,8 +15,8 @@ Card.propTypes = {
 
 Card.defaultProps = {
     title: "",
-    subtitle: 0,
-    value: 0,
+    subtitle: "",
+    value: "",
     active: false,
     type: "active",
     onClick: null
@@ -68,12 +68,8 @@ function Card({ title, subtitle, value, type, active, onClick }) {
                 }
             }}>
             <h4 className="card__title">{title}</h4>
-            <p className={subtitleClasses}>
-                {subtitle > 0
-                    ? "+" + numberFormatter(subtitle)
-                    : numberFormatter(subtitle)}
-            </p>
-            <h5 className="card__value">{numberFormatter(value)}</h5>
+            <p className={subtitleClasses}>{subtitle}</p>
+            <h5 className="card__value">{value}</h5>
         </div>
     );
 }

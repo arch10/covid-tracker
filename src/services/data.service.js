@@ -1,11 +1,14 @@
 import { api, log } from "../util";
+import numeral from "numeral";
+import moment from "moment";
 
 async function getStatsData() {
     try {
         const response = await api.get(
-            "https://disease.sh/v3/covid-19/countries/in?strict=true"
+            "https://api.covid19india.org/data.json"
         );
-        return response.data;
+        const data = response.data;
+        return getSummary(data);
     } catch (error) {
         log.error("data.service.js:getStatsData()", error.message);
     }
@@ -13,21 +16,27 @@ async function getStatsData() {
 
 function getSummary(data) {
     const {
-        cases,
+        confirmed,
         active,
         recovered,
         deaths,
-        todayCases,
-        todayDeaths,
-        todayRecovered
-    } = data;
-    const totalConfirmed = cases;
-    const totalActive = active;
-    const totalRecovered = recovered;
-    const totalDeaths = deaths;
+        deltaconfirmed,
+        deltadeaths,
+        deltarecovered,
+        lastupdatedtime
+    } = data.statewise[0];
+    const totalConfirmed = numeral(confirmed).format("0,0");
+    const totalActive = numeral(active).format("0,0");
+    const totalRecovered = numeral(recovered).format("0,0");
+    const totalDeaths = numeral(deaths).format("0,0");
 
-    const todayConfirmed = todayCases;
-    const todayActive = todayCases - (todayRecovered + todayDeaths);
+    const todayConfirmed = numeral(deltaconfirmed).format("+0,0");
+    const todayActive = numeral(
+        numeral(deltaconfirmed).value() -
+            (numeral(deltarecovered).value() + numeral(deltadeaths).value())
+    ).format("+0,0");
+    const todayRecovered = numeral(deltarecovered).format("+0,0");
+    const todayDeaths = numeral(deltadeaths).format("+0,0");
     return {
         total: {
             confirmed: totalConfirmed,
@@ -40,11 +49,11 @@ function getSummary(data) {
             active: todayActive,
             recovered: todayRecovered,
             deaths: todayDeaths
-        }
+        },
+        updatedAt: moment(lastupdatedtime, "DD/MM/YYYY HH:mm:ss")
     };
 }
 
 export const dataService = {
-    getStatsData,
-    getSummary
+    getStatsData
 };
