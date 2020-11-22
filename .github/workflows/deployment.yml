@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Installing Packages
         run: yarn install
+      - name: List files
+        run: ls
       - name: Deploy
         run: yarn run deploy
         
