@@ -1,0 +1,24 @@
+.app {
+    display: flex;
+    flex-direction: column;
+}
+
+.updated__text {
+    text-align: center;
+    margin-top: 52px;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.25%;
+    font-weight: 400;
+    color: #4e89ae;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.card__container {
+    display: flex;
+    margin: 52px 24px 0px 24px;
+    align-self: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}

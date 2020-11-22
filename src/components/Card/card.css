@@ -1,0 +1,59 @@
+.card {
+    display: flex;
+    height: 160px;
+    width: 260px;
+    border-radius: 16px;
+    margin: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0px 4px 25px 0px #00000040;
+}
+
+.card__title {
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.15%;
+    font-weight: 600;
+    color: #212121;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.card__subtitle {
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.5%;
+    font-weight: 600;
+    margin-top: 15px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.card__value {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    color: #212121;
+    margin-top: 6px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.card__confirm {
+    color: #ed6663;
+}
+
+.card__active {
+    color: #4e89ae;
+}
+
+.card__recovered {
+    color: #4caf50;
+}
+
+.card__deaths {
+    color: #757575;
+}
