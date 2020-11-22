@@ -27,6 +27,6 @@ jobs:
       - name: List files
         run: ls
       - name: Deploy
-        run: yarn run deploy
+        run: CI='' yarn run deploy
         
 
