@@ -19,16 +19,22 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      CI: ''
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.4
       - name: Installing Packages
         run: yarn install
-      - name: List files
-        run: ls
-      - run : git config user.name github-actions
-      - run : git config user.email github-actions@github.com
-      - name: Deploy
-        run: CI='' yarn run deploy
+      - run : |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+        name: Setup Git
+      - name: Build, Push & Deploy
+        run: |
+          yarn run build
+          git --work-tree build add --all
+          git commit -m "Automatic Deploy action run by github-actions"
+          git push origin HEAD:gh-pages --force
         
 
