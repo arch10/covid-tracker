@@ -1,5 +1,25 @@
-.graph__container {
-    width: 500px;
-    height: 300px;
-    align-self: center;
+.graph {
+    width: 800px;
+    height: 480px;
+}
+
+@media only screen and (max-width: 600px) {
+    .graph {
+        width: 500px;
+        height: 300px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .graph {
+        width: 600px;
+        height: 360px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .graph {
+        width: 800px;
+        height: 480px;
+    }
 }

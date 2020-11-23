@@ -6,23 +6,22 @@ import { dataService } from "./services";
 
 function App() {
     const [active, setActive] = useState("confirm");
-    const [summary, setSummary] = useState(null);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         const getData = async () => {
-            const summary = await dataService.getStatsData();
-            setSummary(summary);
+            const data = await dataService.getStatsData();
+            setData(data);
         };
         getData();
     }, []);
-
     return (
         <div className="app">
             <Header />
             <h4 className="updated__text">
                 Last Updated on:
                 {" " +
-                    moment(summary?.updatedAt)
+                    moment(data?.updatedAt)
                         .utcOffset("+05:30")
                         .local()
                         .format("Do MMM, YYYY  hh:mm A [IST]")}
@@ -30,38 +29,45 @@ function App() {
             <div className="card__container">
                 <Card
                     title="Total Confirmed"
-                    subtitle={summary?.daily.confirmed}
-                    value={summary?.total.confirmed}
+                    subtitle={data?.summary.daily.confirmed}
+                    value={data?.summary.total.confirmed}
                     type="confirm"
                     active={active === "confirm"}
                     onClick={setActive}
                 />
                 <Card
                     title="Active"
-                    subtitle={summary?.daily.active}
-                    value={summary?.total.active}
+                    subtitle={data?.summary.daily.active}
+                    value={data?.summary.total.active}
                     type="active"
                     active={active === "active"}
                     onClick={setActive}
                 />
                 <Card
                     title="Recovered"
-                    subtitle={summary?.daily.recovered}
-                    value={summary?.total.recovered}
+                    subtitle={data?.summary.daily.recovered}
+                    value={data?.summary.total.recovered}
                     type="recovered"
                     active={active === "recovered"}
                     onClick={setActive}
                 />
                 <Card
                     title="Total Deaths"
-                    subtitle={summary?.daily.deaths}
-                    value={summary?.total.deaths}
+                    subtitle={data?.summary.daily.deaths}
+                    value={data?.summary.total.deaths}
                     type="deaths"
                     active={active === "deaths"}
                     onClick={setActive}
                 />
             </div>
-            <Graph />
+            <div className="graph__container">
+                <Graph
+                    active={active}
+                    total
+                    data={data?.historical.total[active]}
+                />
+                <Graph active={active} data={data?.historical.daily[active]} />
+            </div>
         </div>
     );
 }
