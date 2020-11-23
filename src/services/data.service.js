@@ -38,7 +38,6 @@ function getSummary(data) {
     const todayRecovered = numeral(deltarecovered).format("+0,0");
     const todayDeaths = numeral(deltadeaths).format("+0,0");
     const historicalData = getHistoricalData(data);
-    console.log(historicalData);
     return {
         summary: {
             total: {

@@ -1,8 +1,7 @@
-import React, { useEffect, useState, memo } from "react";
+import React, { useMemo } from "react";
 import "./card.css";
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import { numberFormatter } from "../../util";
 
 Card.propTypes = {
     title: PropTypes.string,
@@ -32,29 +31,23 @@ const shadow = {
 
 function Card({ title, subtitle, value, type, active, onClick }) {
     const subtitleClasses = classNames(["card__subtitle", `card__${type}`]);
-    const [boxShadow, setBoxShadow] = useState(shadow.DEFAULT);
 
-    useEffect(() => {
+    const boxShadow = useMemo(() => {
         if (active) {
             switch (type) {
                 case "confirm":
-                    setBoxShadow(shadow.CONFIRM);
-                    break;
+                    return shadow.CONFIRM;
                 case "active":
-                    setBoxShadow(shadow.ACTIVE);
-                    break;
+                    return shadow.ACTIVE;
                 case "recovered":
-                    setBoxShadow(shadow.RECOVERED);
-                    break;
+                    return shadow.RECOVERED;
                 case "deaths":
-                    setBoxShadow(shadow.DEATHS);
-                    break;
+                    return shadow.DEATHS;
                 default:
-                    setBoxShadow(shadow.DEFAULT);
-                    break;
+                    return shadow.DEFAULT;
             }
         } else {
-            setBoxShadow(shadow.DEFAULT);
+            return shadow.DEFAULT;
         }
     }, [active, type]);
 
@@ -74,4 +67,4 @@ function Card({ title, subtitle, value, type, active, onClick }) {
     );
 }
 
-export default memo(Card);
+export default Card;

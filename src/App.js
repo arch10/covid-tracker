@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import moment from "moment";
-import { Header, Card, Graph } from "./components";
+import { Header, Card, Graph, FlipSwitch } from "./components";
 import { dataService } from "./services";
 
 function App() {
     const [active, setActive] = useState("confirm");
     const [data, setData] = useState(null);
+    const [selectedTab, setSelectedTab] = useState(0);
 
     useEffect(() => {
         const getData = async () => {
@@ -60,13 +61,21 @@ function App() {
                     onClick={setActive}
                 />
             </div>
+            <div className="switch__container">
+                <FlipSwitch selected={selectedTab} onChange={setSelectedTab} />
+            </div>
             <div className="graph__container">
                 <Graph
                     active={active}
                     total
                     data={data?.historical.total[active]}
+                    selected={selectedTab}
                 />
-                <Graph active={active} data={data?.historical.daily[active]} />
+                <Graph
+                    active={active}
+                    data={data?.historical.daily[active]}
+                    selected={selectedTab}
+                />
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import "./graph.css";
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
@@ -33,22 +33,17 @@ const getChartConfig = (type) => {
     }
 };
 
-function Graph({ active, data, total }) {
-    const [config, setConfig] = useState(null);
-
-    useEffect(() => {
-        const config = getChartConfig(active);
-        setConfig(config);
-    }, [active]);
-
-    // const data = [
-    //     { x: "2020-01-30", y: "1" },
-    //     { x: "2020-01-31", y: "4" },
-    //     { x: "2020-02-01", y: "9" },
-    //     { x: "2020-02-02", y: "16" },
-    //     { x: "2020-02-03", y: "25" },
-    //     { x: "2020-02-04", y: "36" }
-    // ];
+function Graph({ active, data, total, selected }) {
+    const config = useMemo(() => getChartConfig(active), [active]);
+    const manipulatedData = useMemo(() => {
+        if (selected === 0) {
+            return data;
+        } else if (selected === 1) {
+            return data.slice(Math.max(data.length - 90, 0));
+        } else {
+            return data.slice(Math.max(data.length - 30, 0));
+        }
+    }, [data, selected]);
 
     const options = {
         legend: {
@@ -115,7 +110,7 @@ function Graph({ active, data, total }) {
                         {
                             backgroundColor: config?.backgroundColor,
                             borderColor: config?.borderColor,
-                            data: data
+                            data: manipulatedData
                         }
                     ]
                 }}
