@@ -11,7 +11,7 @@ function App() {
 
     useEffect(() => {
         const getData = async () => {
-            const data = await dataService.getStatsData();
+            const data = await dataService.getStatsData(0);
             setData(data);
         };
         getData();
@@ -61,22 +61,29 @@ function App() {
                     onClick={setActive}
                 />
             </div>
-            <div className="switch__container">
-                <FlipSwitch selected={selectedTab} onChange={setSelectedTab} />
-            </div>
-            <div className="graph__container">
-                <Graph
-                    active={active}
-                    total
-                    data={data?.historical.total[active]}
-                    selected={selectedTab}
-                />
-                <Graph
-                    active={active}
-                    data={data?.historical.daily[active]}
-                    selected={selectedTab}
-                />
-            </div>
+            {data?.historical && (
+                <>
+                    <div className="switch__container">
+                        <FlipSwitch
+                            selected={selectedTab}
+                            onChange={setSelectedTab}
+                        />
+                    </div>
+                    <div className="graph__container">
+                        <Graph
+                            active={active}
+                            total
+                            data={data?.historical.total[active]}
+                            selected={selectedTab}
+                        />
+                        <Graph
+                            active={active}
+                            data={data?.historical.daily[active]}
+                            selected={selectedTab}
+                        />
+                    </div>
+                </>
+            )}
         </div>
     );
 }
