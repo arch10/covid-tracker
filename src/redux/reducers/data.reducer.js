@@ -26,6 +26,6 @@ export function dataReducer(state = initialState, action) {
                 loading: true
             };
         default:
-            return initialState;
+            return state;
     }
 }

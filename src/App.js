@@ -1,14 +1,20 @@
 import React from "react";
-import { store } from "./redux/store";
-import { Provider } from "react-redux";
 import Dashboard from "./pages/Dashboard";
+import { connect } from "react-redux";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyles, lightTheme, darkTheme } from "./components";
 
-function App() {
+function App({ darkMode }) {
     return (
-        <Provider store={store}>
+        <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+            <GlobalStyles />
             <Dashboard />
-        </Provider>
+        </ThemeProvider>
     );
 }
-
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        darkMode: state.preference.darkMode
+    };
+};
+export default connect(mapStateToProps)(App);

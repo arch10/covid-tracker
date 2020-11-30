@@ -7,7 +7,11 @@ const loggerMiddleware = createLogger({
     predicate: () => process.env.NODE_ENV === "development"
 });
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers =
+    (process.env.NODE_ENV !== "production" &&
+        typeof window !== "undefined" &&
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+    compose;
 
 export const store = createStore(
     rootReducer,

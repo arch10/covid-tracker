@@ -1,29 +1,34 @@
 import React from "react";
-import "./header.css";
-import logo from "../../assets/icons/logo.svg";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import { Moon } from "react-feather";
+import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
+import { StyledNav, Header6 } from "../StyledComponents";
+import { DarkModeSwitch } from "../DarkModeSwitch";
+import styled from "styled-components";
+
+const StyledLogo = styled(Logo)`
+    fill: #2196f3;
+    margin-right: 12px;
+    cursor: pointer;
+    @media only screen and (max-width: 600px) {
+        height: 28px;
+        width: 28px;
+    }
+`;
+
+const NavHeader = styled(Header6)`
+    cursor: pointer;
+`;
 
 function Header() {
     return (
-        <Navbar bg="light" className="header" fixed="top">
-            <Navbar.Brand href="/">
-                <img src={logo} className="header__icon" alt="Covid Tracker" />
-            </Navbar.Brand>
-            <Navbar.Brand href="/" className="header__title">
+        <StyledNav fixed="top">
+            <StyledLogo onClick={() => (window.location.href = "/")} />
+            <NavHeader onClick={() => (window.location.href = "/")}>
                 Covid Tracker
-            </Navbar.Brand>
-            <div className="ml-auto nav__options">
-                <Nav.Link
-                    onClick={() => {
-                        console.log("Hello");
-                    }}
-                    className="nav__icon">
-                    <Moon size={28} />
-                </Nav.Link>
+            </NavHeader>
+            <div className="ml-auto">
+                <DarkModeSwitch />
             </div>
-        </Navbar>
+        </StyledNav>
     );
 }
 
