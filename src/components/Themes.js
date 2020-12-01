@@ -4,7 +4,7 @@ export const lightTheme = {
     header: "#e3e3e3",
     cardBg: "#fcfcfc",
     cardColors: {
-        confirm: "#ed8345",
+        confirm: "#ed6663",
         active: "#2196f3",
         recovered: "#4caf50",
         deaths: "#757575"
@@ -19,7 +19,7 @@ export const darkTheme = {
     header: "#34464a",
     cardBg: "#1a2f34",
     cardColors: {
-        confirm: "#ed8345",
+        confirm: "#ed6663",
         active: "#2196f3",
         recovered: "#4caf50",
         deaths: "#757575"
