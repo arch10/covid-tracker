@@ -1,8 +1,20 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import Lottie from "react-lottie-player";
 import { preferenceActions } from "../redux/actions";
 import { connect } from "react-redux";
 import switchAnimation from "../assets/animations/dark-mode.json";
+import styled from "styled-components";
+import { WrapperDiv } from "./StyledComponents";
+
+const IconWrapper = styled(WrapperDiv)`
+    height: 64px;
+    width: 64px;
+    cursor: pointer;
+    @media only screen and (max-width: 600px) {
+        height: 56px;
+        width: 56px;
+    }
+`;
 
 function Switch({ darkMode, changeTheme }) {
     const segments = useMemo(() => {
@@ -12,19 +24,16 @@ function Switch({ darkMode, changeTheme }) {
         return [60, 120];
     }, [darkMode]);
 
-    useEffect(() => {}, [darkMode]);
-
     return (
-        <div onClick={changeTheme}>
+        <IconWrapper onClick={changeTheme}>
             <Lottie
                 play
                 animationData={switchAnimation}
                 segments={segments}
                 loop={false}
                 speed={2}
-                style={{ width: 72, height: 72 }}
             />
-        </div>
+        </IconWrapper>
     );
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
-import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
-import { StyledNav, Header6 } from "../StyledComponents";
-import { DarkModeSwitch } from "../DarkModeSwitch";
+import { ReactComponent as Logo } from "../assets/icons/logo.svg";
+import { StyledNav, Header6 } from "./StyledComponents";
+import { DarkModeSwitch } from "./DarkModeSwitch";
 import styled from "styled-components";
 
 const StyledLogo = styled(Logo)`

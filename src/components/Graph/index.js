@@ -3,45 +3,15 @@ import "./graph.css";
 import { Line } from "react-chartjs-2";
 import numeral from "numeral";
 
-const getChartConfig = (type) => {
-    switch (type) {
-        case "active":
-            return {
-                title: "Active Cases",
-                backgroundColor: "#4e89ae80",
-                borderColor: "#4e89ae"
-            };
-        case "recovered":
-            return {
-                title: "Recovered",
-                backgroundColor: "#4caf5080",
-                borderColor: "#4caf50"
-            };
-        case "deaths":
-            return {
-                title: "Deaths",
-                backgroundColor: "#75757580",
-                borderColor: "#757575"
-            };
-        case "confirm":
-        default:
-            return {
-                title: "Confirmed Cases",
-                backgroundColor: "#ed666380",
-                borderColor: "#ed6663"
-            };
-    }
-};
-
-function Graph({ active, data, total, selected }) {
-    const config = useMemo(() => getChartConfig(active), [active]);
+function Graph({ selected, darkMode, data, title, graphOptions }) {
     const manipulatedData = useMemo(() => {
+        const newData = [...data];
         if (selected === 0) {
-            return data;
+            return newData;
         } else if (selected === 1) {
-            return data.slice(Math.max(data.length - 90, 0));
+            return newData.slice(Math.max(newData.length - 90, 0));
         } else {
-            return data.slice(Math.max(data.length - 30, 0));
+            return newData.slice(Math.max(newData.length - 30, 0));
         }
     }, [data, selected]);
 
@@ -50,9 +20,10 @@ function Graph({ active, data, total, selected }) {
             display: false
         },
         title: {
-            text: (total ? "Total " : "Daily ") + config?.title,
+            text: title,
             display: true,
-            fontFamily: "Lucida Sans Regular"
+            fontFamily: "Lucida Sans Regular",
+            fontColor: darkMode ? "#FAFAFA" : "#212121"
         },
         elements: {
             point: {
@@ -90,7 +61,7 @@ function Graph({ active, data, total, selected }) {
             yAxes: [
                 {
                     gridLines: {
-                        display: true
+                        display: false
                     },
                     ticks: {
                         callback: function (value, index, values) {
@@ -108,8 +79,8 @@ function Graph({ active, data, total, selected }) {
                 data={{
                     datasets: [
                         {
-                            backgroundColor: config?.backgroundColor,
-                            borderColor: config?.borderColor,
+                            backgroundColor: graphOptions.backgroundColor,
+                            borderColor: graphOptions.borderColor,
                             data: manipulatedData
                         }
                     ]

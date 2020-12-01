@@ -1,7 +1,7 @@
 import { preferenceConstants } from "../../constants";
 
 const initialState = {
-    darkMode: window.localStorage.getItem("darkMode") || false
+    darkMode: JSON.parse(window.localStorage.getItem("darkMode")) || false
 };
 
 export function preferenceReducer(state = initialState, action) {
