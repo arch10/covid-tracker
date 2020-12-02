@@ -80,22 +80,39 @@ export const WrapperDiv = styled.div`
     display: flex;
     height: ${({ height }) => height};
     width: ${({ width }) => width};
+    flex: ${({ flex }) => flex};
     flex-direction: ${({ flexDirection }) => flexDirection};
     ${({ margin }) =>
         margin &&
         css`
             margin: ${margin.top || "0"}px ${margin.left || "0"}px
-                ${margin.bottom || "0"}px ${margin.left || "0"}px;
+                ${margin.bottom || "0"}px ${margin.right || "0"}px;
         `};
     ${({ padding }) =>
         padding &&
         css`
             padding: ${padding.top || "0"}px ${padding.left || "0"}px
-                ${padding.bottom || "0"}px ${padding.left || "0"}px;
+                ${padding.bottom || "0"}px ${padding.right || "0"}px;
         `};
     justify-content: ${({ justifyContent }) => justifyContent};
     align-items: ${({ alignItems }) => alignItems};
     flex-wrap: wrap;
+
+    @media only screen and (max-width: 460px) {
+        ${({ margin }) =>
+            margin &&
+            css`
+                margin: ${margin.top / 2 || "0"}px ${margin.left / 2 || "0"}px
+                    ${margin.bottom / 2 || "0"}px ${margin.right / 2 || "0"}px;
+            `};
+        ${({ padding }) =>
+            padding &&
+            css`
+                padding: ${padding.top / 2 || "0"}px
+                    ${padding.left / 2 || "0"}px ${padding.bottom / 2 || "0"}px
+                    ${padding.right / 2 || "0"}px;
+            `};
+    }
 `;
 
 export const CardWrapper = styled(WrapperDiv)`
@@ -135,5 +152,40 @@ export const SwitchItem = styled.div`
         `};
     & ${Caption} {
         color: ${({ selected, theme }) => (selected ? "#fcfcfc" : theme.text)};
+    }
+`;
+
+export const TableItem = styled.div`
+    align-items: flex-end;
+    background-color: ${({ theme }) => theme.table.secondary};
+    display: flex;
+    flex-direction: column;
+    padding: 8px 8px 8px 8px;
+    border-radius: 6px;
+    justify-content: center;
+    cursor: pointer;
+    height: ${({ last }) => (last ? "44px" : "100%")};
+    ${({ header, state }) =>
+        header &&
+        css`
+            align-items: flex-start;
+            background-color: ${({ theme }) => theme.table.primary};
+            height: ${!state ? "44px" : null};
+        `};
+    ${({ state }) =>
+        state &&
+        css`
+            width: 120px;
+        `};
+
+    @media only screen and (min-width: 768px) {
+        width: ${({ state }) => (state ? 240 : 120)}px;
+        padding-left: ${({ state }) => (state ? 16 : 8)}px;
+    }
+`;
+
+export const TableRow = styled.tr`
+    &:hover ${TableItem} {
+        background-color: ${({ theme }) => theme.table.primary};
     }
 `;

@@ -5,9 +5,11 @@ export function getDataFromCovidIndia(data) {
     const { lastupdatedtime } = data.statewise[0];
     const summaryData = getSummaryFromCovidIndia(data);
     const historicalData = getHistoricalDataFromCovidIndia(data);
+    const stateWise = getStateWiseData(data);
     return {
         summary: summaryData,
         historical: historicalData,
+        stateWise: stateWise,
         updatedAt: moment(lastupdatedtime, "DD/MM/YYYY HH:mm:ss")
     };
 }
@@ -119,4 +121,26 @@ function getHistoricalDataFromCovidIndia(data) {
             deaths: dailyDeaths
         }
     };
+}
+
+function getStateWiseData(data) {
+    const { statewise } = data;
+
+    return statewise.map((value) => {
+        return {
+            totalConfirmed: numeral(value.confirmed).format("0,0"),
+            totalActive: numeral(value.active).format("0,0"),
+            totalRecovered: numeral(value.recovered).format("0,0"),
+            totalDeaths: numeral(value.deaths).format("0,0"),
+            todayConfirmed: numeral(value.deltaconfirmed).format("0,0"),
+            todayActive: numeral(
+                numeral(value.deltaconfirmed).value() -
+                    (numeral(value.deltarecovered).value() +
+                        numeral(value.deltadeaths).value())
+            ).format("+0,0"),
+            todayRecovered: numeral(value.deltarecovered).format("+0,0"),
+            todayDeaths: numeral(value.deltadeaths).format("+0,0"),
+            state: value.state
+        };
+    });
 }

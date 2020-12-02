@@ -5,12 +5,11 @@ import Lottie from "react-lottie-player";
 import errorAnimation from "../assets/animations/error.json";
 import loadingAnimation from "../assets/animations/loading.json";
 import { dataActions } from "../redux/actions";
-import { DataSelector } from "../fragments";
+import { DataSelector, TableSection } from "../fragments";
 import {
     Header,
     Card,
     Graph,
-    FlipSwitch,
     Body1,
     WrapperDiv,
     lightTheme,
@@ -167,6 +166,7 @@ function Dashboard({ covidData, getData, preference }) {
                         </WrapperDiv>
                     </>
                 )}
+                <TableSection data={data.stateWise} theme={theme} />
             </WrapperDiv>
         );
     };

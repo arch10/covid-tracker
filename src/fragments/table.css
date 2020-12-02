@@ -1,0 +1,20 @@
+.state__table {
+    border-spacing: 3px;
+    border-collapse: separate;
+}
+
+/* .state__table th,
+td {
+    width: 80px;
+    border-radius: 6px;
+}
+
+@media only screen and (min-width: 768px) {
+    th,
+    td {
+        width: 120px;
+    }
+    .state {
+        width: 200px;
+    }
+} */

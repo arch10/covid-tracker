@@ -9,6 +9,10 @@ export const lightTheme = {
         recovered: "#4caf50",
         deaths: "#757575"
     },
+    table: {
+        primary: " #ebebeb",
+        secondary: "#f7f7f7"
+    },
     primary: "#ed8345",
     secondary: "#2196f3",
     errorColor: "#ed6663"
@@ -23,6 +27,10 @@ export const darkTheme = {
         active: "#2196f3",
         recovered: "#4caf50",
         deaths: "#757575"
+    },
+    table: {
+        primary: "#0e2428",
+        secondary: "#1a2f34"
     },
     primary: "#ed8345",
     secondary: "#2196f3",
