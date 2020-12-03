@@ -3,18 +3,15 @@
     border-collapse: separate;
 }
 
-/* .state__table th,
-td {
-    width: 80px;
-    border-radius: 6px;
+.icon {
+    cursor: pointer;
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    transition-duration: 0.3s;
+    transition-property: box-shadow, transform;
 }
 
-@media only screen and (min-width: 768px) {
-    th,
-    td {
-        width: 120px;
-    }
-    .state {
-        width: 200px;
-    }
-} */
+.icon:hover {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+}

@@ -9,6 +9,7 @@ async function getStatsData(ds) {
         return getData(data, ds);
     } catch (error) {
         log.error("data.service.js:getStatsData()", error.message);
+        throw error;
     }
 }
 

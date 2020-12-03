@@ -2,10 +2,11 @@ import React, { useState, useEffect, useMemo } from "react";
 import { connect } from "react-redux";
 import moment from "moment";
 import Lottie from "react-lottie-player";
+import { X } from "react-feather";
 import errorAnimation from "../assets/animations/error.json";
 import loadingAnimation from "../assets/animations/loading.json";
-import { dataActions } from "../redux/actions";
-import { DataSelector, TableSection } from "../fragments";
+import { dataActions, preferenceActions } from "../redux/actions";
+import { DataSelector, TableSection, Footer } from "../fragments";
 import {
     Header,
     Card,
@@ -13,7 +14,9 @@ import {
     Body1,
     WrapperDiv,
     lightTheme,
-    darkTheme
+    darkTheme,
+    Divider,
+    Header5
 } from "../components";
 
 const getTitle = (type) => {
@@ -56,9 +59,10 @@ const getGraphColors = (type, theme) => {
     }
 };
 
-function Dashboard({ covidData, getData, preference }) {
-    const [active, setActive] = useState("confirm");
+function Dashboard({ covidData, getData, preference, changeActiveTab }) {
     const [selectedTab, setSelectedTab] = useState(0);
+
+    const { activeTab } = preference;
 
     const { data, error, loading } = covidData;
 
@@ -79,8 +83,18 @@ function Dashboard({ covidData, getData, preference }) {
             <WrapperDiv flexDirection="column">
                 <Header />
                 <WrapperDiv
+                    alignItems="center"
+                    justifyContent="center"
+                    alignSelf="center"
                     margin={{ top: 100 }}
-                    padding={{ top: 16, bottom: 16, left: 16, right: 16 }}
+                    padding={{ top: 16, left: 16, right: 16, bottom: 16 }}>
+                    <Header5>Covid Tracker India</Header5>
+                </WrapperDiv>
+                <Divider>
+                    <X size={16} />
+                </Divider>
+                <WrapperDiv
+                    padding={{ top: 16, left: 16, right: 16 }}
                     justifyContent="center"
                     alignItems="center">
                     <Body1 textAlign="center" color={theme.secondary}>
@@ -101,32 +115,32 @@ function Dashboard({ covidData, getData, preference }) {
                         subtitle={data?.summary.daily.confirmed}
                         value={data?.summary.total.confirmed}
                         type="confirm"
-                        active={active === "confirm"}
-                        onClick={setActive}
+                        active={activeTab === "confirm"}
+                        onClick={changeActiveTab}
                     />
                     <Card
                         title="Active"
                         subtitle={data?.summary.daily.active}
                         value={data?.summary.total.active}
                         type="active"
-                        active={active === "active"}
-                        onClick={setActive}
+                        active={activeTab === "active"}
+                        onClick={changeActiveTab}
                     />
                     <Card
                         title="Recovered"
                         subtitle={data?.summary.daily.recovered}
                         value={data?.summary.total.recovered}
                         type="recovered"
-                        active={active === "recovered"}
-                        onClick={setActive}
+                        active={activeTab === "recovered"}
+                        onClick={changeActiveTab}
                     />
                     <Card
                         title="Total Deaths"
                         subtitle={data?.summary.daily.deaths}
                         value={data?.summary.total.deaths}
                         type="deaths"
-                        active={active === "deaths"}
-                        onClick={setActive}
+                        active={activeTab === "deaths"}
+                        onClick={changeActiveTab}
                     />
                 </WrapperDiv>
                 {data?.historical && (
@@ -143,30 +157,31 @@ function Dashboard({ covidData, getData, preference }) {
                             <DataSelector
                                 selected={selectedTab}
                                 onChange={setSelectedTab}
-                                active={active}
+                                active={activeTab}
                             />
                         </WrapperDiv>
                         <WrapperDiv alignItems="center" justifyContent="center">
                             <Graph
-                                active={active}
-                                title={"Total " + getTitle(active)}
-                                data={data.historical.total[active]}
+                                active={activeTab}
+                                title={"Total " + getTitle(activeTab)}
+                                data={data.historical.total[activeTab]}
                                 darkMode={preference.darkMode}
                                 selected={selectedTab}
-                                graphOptions={getGraphColors(active, theme)}
+                                graphOptions={getGraphColors(activeTab, theme)}
                             />
                             <Graph
-                                active={active}
-                                title={"Daily " + getTitle(active)}
-                                data={data.historical.daily[active]}
+                                active={activeTab}
+                                title={"Daily " + getTitle(activeTab)}
+                                data={data.historical.daily[activeTab]}
                                 darkMode={preference.darkMode}
                                 selected={selectedTab}
-                                graphOptions={getGraphColors(active, theme)}
+                                graphOptions={getGraphColors(activeTab, theme)}
                             />
                         </WrapperDiv>
                     </>
                 )}
                 <TableSection data={data.stateWise} theme={theme} />
+                <Footer />
             </WrapperDiv>
         );
     };
@@ -213,7 +228,8 @@ function Dashboard({ covidData, getData, preference }) {
 
 const mapStateToProps = (state) => state;
 const actionCreators = {
-    getData: dataActions.getData
+    getData: dataActions.getData,
+    changeActiveTab: preferenceActions.changeActiveTab
 };
 
 export default connect(mapStateToProps, actionCreators)(Dashboard);

@@ -85,32 +85,33 @@ export const WrapperDiv = styled.div`
     ${({ margin }) =>
         margin &&
         css`
-            margin: ${margin.top || "0"}px ${margin.left || "0"}px
-                ${margin.bottom || "0"}px ${margin.right || "0"}px;
+            margin: ${margin.top || "0"}px ${margin.right || "0"}px
+                ${margin.bottom || "0"}px ${margin.left || "0"}px;
         `};
     ${({ padding }) =>
         padding &&
         css`
-            padding: ${padding.top || "0"}px ${padding.left || "0"}px
-                ${padding.bottom || "0"}px ${padding.right || "0"}px;
+            padding: ${padding.top || "0"}px ${padding.right || "0"}px
+                ${padding.bottom || "0"}px ${padding.left || "0"}px;
         `};
     justify-content: ${({ justifyContent }) => justifyContent};
     align-items: ${({ alignItems }) => alignItems};
     flex-wrap: wrap;
+    align-self: ${({ alignSelf }) => alignSelf};
 
     @media only screen and (max-width: 460px) {
         ${({ margin }) =>
             margin &&
             css`
-                margin: ${margin.top / 2 || "0"}px ${margin.left / 2 || "0"}px
-                    ${margin.bottom / 2 || "0"}px ${margin.right / 2 || "0"}px;
+                margin: ${margin.top / 2 || "0"}px ${margin.right / 2 || "0"}px
+                    ${margin.bottom / 2 || "0"}px ${margin.left / 2 || "0"}px;
             `};
         ${({ padding }) =>
             padding &&
             css`
                 padding: ${padding.top / 2 || "0"}px
-                    ${padding.left / 2 || "0"}px ${padding.bottom / 2 || "0"}px
-                    ${padding.right / 2 || "0"}px;
+                    ${padding.right / 2 || "0"}px ${padding.bottom / 2 || "0"}px
+                    ${padding.left / 2 || "0"}px;
             `};
     }
 `;
@@ -165,12 +166,13 @@ export const TableItem = styled.div`
     justify-content: center;
     cursor: pointer;
     height: ${({ last }) => (last ? "44px" : "100%")};
+    transition: all 0.25s linear;
     ${({ header, state }) =>
         header &&
         css`
             align-items: flex-start;
             background-color: ${({ theme }) => theme.table.primary};
-            height: ${!state ? "44px" : null};
+            height: ${!state ? "44px" : "44px"};
         `};
     ${({ state }) =>
         state &&
@@ -188,4 +190,62 @@ export const TableRow = styled.tr`
     &:hover ${TableItem} {
         background-color: ${({ theme }) => theme.table.primary};
     }
+`;
+
+export const Button = styled.button`
+    width: ${({ width }) => width};
+    height: ${({ height }) => height};
+    align-self: ${({ alignSelf }) => alignSelf};
+    border-radius: 6px;
+    padding: 8px;
+    background-color: ${({ theme }) => theme.table.secondary};
+    ${({ margin }) =>
+        margin &&
+        css`
+            margin: ${margin.top || "0"}px ${margin.right || "0"}px
+                ${margin.bottom || "0"}px ${margin.left || "0"}px;
+        `};
+    border: none;
+    outline: none;
+    color: ${({ theme, color }) => color || theme.text};
+    transition: all 0.25s linear;
+    &:hover {
+        background-color: ${({ theme }) => theme.table.primary};
+    }
+`;
+
+export const Divider = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        height: 2px;
+        min-width: 200px;
+    }
+
+    &::before {
+        background: linear-gradient(
+            to right,
+            ${({ theme }) => theme.body + "," + theme.text}
+        );
+        margin-right: 20px;
+    }
+
+    &::after {
+        background: linear-gradient(
+            to left,
+            ${({ theme }) => theme.body + "," + theme.text}
+        );
+        margin-left: 20px;
+    }
+`;
+
+export const Avatar = styled.img`
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
 `;
