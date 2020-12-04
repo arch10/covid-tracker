@@ -8,9 +8,10 @@ const StyledLogo = styled(Logo)`
     fill: #2196f3;
     margin-right: 12px;
     cursor: pointer;
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 576px) {
         height: 28px;
         width: 28px;
+        margin-left: 16px;
     }
 `;
 

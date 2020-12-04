@@ -86,7 +86,7 @@ function Dashboard({ covidData, getData, preference, changeActiveTab }) {
                     alignItems="center"
                     justifyContent="center"
                     alignSelf="center"
-                    margin={{ top: 100 }}
+                    margin={{ top: 120 }}
                     padding={{ top: 16, left: 16, right: 16, bottom: 16 }}>
                     <Header5>Covid Tracker India</Header5>
                 </WrapperDiv>

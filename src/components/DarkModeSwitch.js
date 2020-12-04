@@ -10,7 +10,7 @@ const IconWrapper = styled(WrapperDiv)`
     height: 64px;
     width: 64px;
     cursor: pointer;
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 576px) {
         height: 56px;
         width: 56px;
     }

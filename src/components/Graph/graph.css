@@ -3,17 +3,17 @@
     height: 350px;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 460px) {
     .graph {
-        width: 420px;
-        height: 210px;
+        width: 400px;
+        height: 200px;
     }
 }
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 460px) {
     .graph {
-        width: 460px;
-        height: 230px;
+        width: 440px;
+        height: 220px;
     }
 }
 

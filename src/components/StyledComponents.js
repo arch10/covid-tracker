@@ -6,8 +6,9 @@ export const StyledNav = styled(Navbar)`
     width: 100%;
     box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.25);
     background-color: ${({ theme }) => theme.header};
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 576px) {
         height: 52px;
+        padding: 0px;
     }
 `;
 
@@ -16,6 +17,9 @@ export const Header6 = styled.h5`
     color: ${({ theme, color }) => color || theme.text};
     font-weight: 400;
     margin: 0px;
+    @media only screen and (max-width: 460px) {
+        font-size: 18px;
+    }
 `;
 
 export const Header5 = styled.h5`
@@ -25,6 +29,10 @@ export const Header5 = styled.h5`
     color: ${({ theme, color }) => color || theme.text};
     font-weight: 600;
     margin: 0px;
+    @media only screen and (max-width: 460px) {
+        font-size: 18px;
+        line-height: 20px;
+    }
 `;
 
 export const Header4 = styled.h5`
@@ -34,6 +42,10 @@ export const Header4 = styled.h5`
     color: ${({ theme, color }) => color || theme.text};
     font-weight: 400;
     margin: 0px;
+    @media only screen and (max-width: 460px) {
+        font-size: 22px;
+        line-height: 24px;
+    }
 `;
 
 export const Body2 = styled.h5`
@@ -44,6 +56,17 @@ export const Body2 = styled.h5`
     color: ${({ theme, color }) => color || theme.text};
     text-align: ${({ textAlign }) => textAlign || "left"};
     margin: 0px;
+
+    @media only screen and (max-width: 460px) {
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.25px;
+    }
+    @media only screen and (max-width: 576px) {
+        font-size: 13px;
+        line-height: 15px;
+        letter-spacing: 0.25px;
+    }
 `;
 
 export const Body1 = styled.h5`
@@ -54,6 +77,19 @@ export const Body1 = styled.h5`
     color: ${({ theme, color }) => color || theme.text};
     text-align: ${({ textAlign }) => textAlign || "left"};
     margin: 0px;
+
+    @media only screen and (max-width: 460px) {
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.1px;
+        font-weight: 600;
+    }
+    @media only screen and (max-width: 576px) {
+        font-size: 13px;
+        line-height: 15px;
+        letter-spacing: 0.1px;
+        font-weight: 600;
+    }
 `;
 
 export const Caption = styled.h5`
@@ -64,6 +100,10 @@ export const Caption = styled.h5`
     color: ${({ theme, color }) => color || theme.text};
     text-align: ${({ textAlign }) => textAlign || "left"};
     margin: 0px;
+    @media only screen and (max-width: 460px) {
+        font-size: 10px;
+        line-height: 12px;
+    }
 `;
 
 export const Subtitle2 = styled.h5`
@@ -74,6 +114,10 @@ export const Subtitle2 = styled.h5`
     color: ${({ theme, color }) => color || theme.text};
     text-align: ${({ textAlign }) => textAlign || "left"};
     margin: 0px;
+    @media only screen and (max-width: 460px) {
+        font-size: 12px;
+        line-height: 14px;
+    }
 `;
 
 export const WrapperDiv = styled.div`
@@ -126,6 +170,15 @@ export const CardWrapper = styled(WrapperDiv)`
     box-shadow: 0px 2px ${({ active }) => (active ? "25px" : "5px")} 0px
         ${({ type, active, theme }) =>
             theme.cardColors[active ? type : ""] || "#373737"}bf;
+
+    @media only screen and (max-width: 576px) {
+        height: 150px;
+        width: 235px;
+    }
+    @media only screen and (max-width: 460px) {
+        height: 140px;
+        width: 230px;
+    }
 `;
 
 export const SwitchItem = styled.div`
@@ -184,6 +237,12 @@ export const TableItem = styled.div`
         width: ${({ state }) => (state ? 240 : 120)}px;
         padding-left: ${({ state }) => (state ? 16 : 8)}px;
     }
+    @media only screen and (max-width: 576px) {
+        max-width: ${({ state }) => (state ? 110 : 90)}px;
+    }
+    @media only screen and (max-width: 460px) {
+        max-width: ${({ state }) => (state ? 100 : 80)}px;
+    }
 `;
 
 export const TableRow = styled.tr`
@@ -241,6 +300,23 @@ export const Divider = styled.div`
             ${({ theme }) => theme.body + "," + theme.text}
         );
         margin-left: 20px;
+    }
+
+    @media only screen and (max-width: 460px) {
+        &::before,
+        &::after {
+            content: "";
+            display: block;
+            height: 1px;
+            min-width: 150px;
+        }
+        &::before {
+            margin-right: 10px;
+        }
+
+        &::after {
+            margin-left: 10px;
+        }
     }
 `;
 

@@ -8,8 +8,7 @@ import {
     Caption,
     Body2,
     Body1,
-    TableRow,
-    Button
+    TableRow
 } from "../components";
 
 function assignChangeValue(changeValue) {
@@ -107,9 +106,7 @@ function TableSection({ data, theme }) {
     };
 
     return (
-        <WrapperDiv
-            margin={{ top: 36, left: 16, right: 16, bottom: 36 }}
-            justifyContent="center">
+        <WrapperDiv margin={{ top: 36, bottom: 36 }} justifyContent="center">
             <table className="state__table">
                 <thead>
                     <TableRow>
@@ -216,7 +213,9 @@ function TableSection({ data, theme }) {
                                 onClick={() => {
                                     setExpand((prev) => !prev);
                                 }}>
-                                {expand ? "Show Less" : "Show More"}
+                                <Body2>
+                                    {expand ? "Show Less" : "Show More"}
+                                </Body2>
                             </TableItem>
                         </td>
                     </TableRow>
