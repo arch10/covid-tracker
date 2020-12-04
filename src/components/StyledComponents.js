@@ -172,7 +172,7 @@ export const TableItem = styled.div`
         css`
             align-items: flex-start;
             background-color: ${({ theme }) => theme.table.primary};
-            height: ${!state ? "44px" : "44px"};
+            height: ${!state ? "44px" : "100%"};
         `};
     ${({ state }) =>
         state &&

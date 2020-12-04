@@ -109,124 +109,119 @@ function TableSection({ data, theme }) {
     return (
         <WrapperDiv
             margin={{ top: 36, left: 16, right: 16, bottom: 36 }}
-            alignItems="center"
-            flexDirection="column">
-            <WrapperDiv flexDirection="column">
-                <table className="state__table">
-                    <thead>
-                        <TableRow>
-                            <th>
-                                <TableItem header state>
-                                    <Body1 style={{ fontWeight: 600 }}>
-                                        State
-                                    </Body1>
-                                </TableItem>
-                            </th>
-                            <th>
-                                <TableItem header>
-                                    <Body1 style={{ fontWeight: 600 }}>
-                                        Confirmed
-                                    </Body1>
-                                </TableItem>
-                            </th>
-                            <th>
-                                <TableItem header>
-                                    <Body1 style={{ fontWeight: 600 }}>
-                                        Active
-                                    </Body1>
-                                </TableItem>
-                            </th>
-                            <th>
-                                <TableItem header>
-                                    <Body1 style={{ fontWeight: 600 }}>
-                                        Recovered
-                                    </Body1>
-                                </TableItem>
-                            </th>
-                            <th>
-                                <TableItem header>
-                                    <Body1 style={{ fontWeight: 600 }}>
-                                        Deaths
-                                    </Body1>
-                                </TableItem>
-                            </th>
-                        </TableRow>
-                    </thead>
-                    <tbody>
-                        {renderTableRow()}
-                        <TableRow key={data.length}>
-                            <td>
-                                <TableItem header state last>
-                                    <Body2 style={{ fontWeight: 600 }}>
-                                        India
-                                    </Body2>
-                                </TableItem>
-                            </td>
-                            <td>
-                                <TableItem last>
-                                    <Caption
-                                        style={{ marginBottom: 4 }}
-                                        color={theme.cardColors.confirm}>
-                                        {assignChangeValue(
-                                            data[0].todayConfirmed
-                                        )}
-                                    </Caption>
-                                    <Body2 style={{ fontWeight: 600 }}>
-                                        {data[0].totalConfirmed}
-                                    </Body2>
-                                </TableItem>
-                            </td>
-                            <td>
-                                <TableItem last>
-                                    <Caption
-                                        style={{ marginBottom: 4 }}
-                                        color={theme.cardColors.active}>
-                                        {assignChangeValue(data[0].todayActive)}
-                                    </Caption>
-                                    <Body2 style={{ fontWeight: 600 }}>
-                                        {data[0].totalActive}
-                                    </Body2>
-                                </TableItem>
-                            </td>
-                            <td>
-                                <TableItem last>
-                                    <Caption
-                                        style={{ marginBottom: 4 }}
-                                        color={theme.cardColors.recovered}>
-                                        {assignChangeValue(
-                                            data[0].todayRecovered
-                                        )}
-                                    </Caption>
-                                    <Body2 style={{ fontWeight: 600 }}>
-                                        {data[0].totalRecovered}
-                                    </Body2>
-                                </TableItem>
-                            </td>
-                            <td>
-                                <TableItem last>
-                                    <Caption
-                                        style={{ marginBottom: 4 }}
-                                        color={theme.cardColors.deaths}>
-                                        {assignChangeValue(data[0].todayDeaths)}
-                                    </Caption>
-                                    <Body2 style={{ fontWeight: 600 }}>
-                                        {data[0].totalDeaths}
-                                    </Body2>
-                                </TableItem>
-                            </td>
-                        </TableRow>
-                    </tbody>
-                </table>
-                <Button
-                    width="120px"
-                    alignSelf="flex-end"
-                    margin={{ right: 3 }}
-                    onClick={() => {
-                        setExpand((prev) => !prev);
-                    }}>
-                    {expand ? "Show Less" : "Show More"}
-                </Button>
-            </WrapperDiv>
+            justifyContent="center">
+            <table className="state__table">
+                <thead>
+                    <TableRow>
+                        <th>
+                            <TableItem header state>
+                                <Body1 style={{ fontWeight: 600 }}>State</Body1>
+                            </TableItem>
+                        </th>
+                        <th>
+                            <TableItem header>
+                                <Body1 style={{ fontWeight: 600 }}>
+                                    Confirmed
+                                </Body1>
+                            </TableItem>
+                        </th>
+                        <th>
+                            <TableItem header>
+                                <Body1 style={{ fontWeight: 600 }}>
+                                    Active
+                                </Body1>
+                            </TableItem>
+                        </th>
+                        <th>
+                            <TableItem header>
+                                <Body1 style={{ fontWeight: 600 }}>
+                                    Recovered
+                                </Body1>
+                            </TableItem>
+                        </th>
+                        <th>
+                            <TableItem header>
+                                <Body1 style={{ fontWeight: 600 }}>
+                                    Deaths
+                                </Body1>
+                            </TableItem>
+                        </th>
+                    </TableRow>
+                </thead>
+                <tbody>
+                    {renderTableRow()}
+                    <TableRow key={data.length}>
+                        <td>
+                            <TableItem header state last>
+                                <Body2 style={{ fontWeight: 600 }}>India</Body2>
+                            </TableItem>
+                        </td>
+                        <td>
+                            <TableItem last>
+                                <Caption
+                                    style={{ marginBottom: 4 }}
+                                    color={theme.cardColors.confirm}>
+                                    {assignChangeValue(data[0].todayConfirmed)}
+                                </Caption>
+                                <Body2 style={{ fontWeight: 600 }}>
+                                    {data[0].totalConfirmed}
+                                </Body2>
+                            </TableItem>
+                        </td>
+                        <td>
+                            <TableItem last>
+                                <Caption
+                                    style={{ marginBottom: 4 }}
+                                    color={theme.cardColors.active}>
+                                    {assignChangeValue(data[0].todayActive)}
+                                </Caption>
+                                <Body2 style={{ fontWeight: 600 }}>
+                                    {data[0].totalActive}
+                                </Body2>
+                            </TableItem>
+                        </td>
+                        <td>
+                            <TableItem last>
+                                <Caption
+                                    style={{ marginBottom: 4 }}
+                                    color={theme.cardColors.recovered}>
+                                    {assignChangeValue(data[0].todayRecovered)}
+                                </Caption>
+                                <Body2 style={{ fontWeight: 600 }}>
+                                    {data[0].totalRecovered}
+                                </Body2>
+                            </TableItem>
+                        </td>
+                        <td>
+                            <TableItem last>
+                                <Caption
+                                    style={{ marginBottom: 4 }}
+                                    color={theme.cardColors.deaths}>
+                                    {assignChangeValue(data[0].todayDeaths)}
+                                </Caption>
+                                <Body2 style={{ fontWeight: 600 }}>
+                                    {data[0].totalDeaths}
+                                </Body2>
+                            </TableItem>
+                        </td>
+                    </TableRow>
+                    <TableRow>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <TableItem
+                                last
+                                onClick={() => {
+                                    setExpand((prev) => !prev);
+                                }}>
+                                {expand ? "Show Less" : "Show More"}
+                            </TableItem>
+                        </td>
+                    </TableRow>
+                </tbody>
+            </table>
         </WrapperDiv>
     );
 }
