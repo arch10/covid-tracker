@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { ReactComponent as Logo } from "../assets/icons/logo.svg";
 import { StyledNav, Header6, Body2 } from "./StyledComponents";
+import { useLocation, NavLink } from "react-router-dom";
 import { DarkModeSwitch } from "./DarkModeSwitch";
+import { Home, PlusSquare, Info } from "react-feather";
+import { preferenceActions } from "../redux/actions";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import classNames from "classnames";
@@ -22,8 +25,9 @@ const NavHeader = styled(Header6)`
     cursor: pointer;
 `;
 
-function Header({ darkMode }) {
+function Header({ darkMode, changeTheme }) {
     const [open, setOpen] = useState(false);
+    const location = useLocation();
     return (
         <>
             <StyledNav fixed="top">
@@ -32,20 +36,29 @@ function Header({ darkMode }) {
                     Covid Tracker
                 </NavHeader>
                 <div className="ml-auto desktop">
-                    <div
-                        onClick={() => {
-                            setOpen(false);
-                            console.log("Vaccine");
-                        }}>
-                        <Body2>Vaccine</Body2>
-                    </div>
-                    <div
-                        onClick={() => {
-                            setOpen(false);
-                            console.log("About");
-                        }}>
-                        <Body2>About</Body2>
-                    </div>
+                    <NavLink
+                        to="/"
+                        className={classNames(["nav-link", { dark: darkMode }])}
+                        exact>
+                        <Home />
+                    </NavLink>
+                    <NavLink
+                        to="/vaccine"
+                        className={classNames([
+                            "nav-link",
+                            { dark: darkMode }
+                        ])}>
+                        <PlusSquare />
+                    </NavLink>
+                    <NavLink
+                        to="/about"
+                        className={classNames([
+                            "nav-link",
+                            { dark: darkMode }
+                        ])}>
+                        <Info />
+                    </NavLink>
+
                     <DarkModeSwitch />
                 </div>
                 <div className="ml-auto mobile">
@@ -75,23 +88,35 @@ function Header({ darkMode }) {
                 <div
                     onClick={() => {
                         setOpen(false);
-                        window.location.href = "/";
+                        if (location.pathname !== "/") {
+                            window.location.href = "/";
+                        }
                     }}>
                     <Body2>Home</Body2>
                 </div>
                 <div
                     onClick={() => {
                         setOpen(false);
-                        console.log("Vaccine");
+                        if (location.pathname !== "/vaccine") {
+                            window.location.href = "/vaccine";
+                        }
                     }}>
                     <Body2>Vaccine</Body2>
                 </div>
                 <div
                     onClick={() => {
                         setOpen(false);
-                        console.log("About");
+                        if (location.pathname !== "/about") {
+                            window.location.href = "/about";
+                        }
                     }}>
                     <Body2>About</Body2>
+                </div>
+                <div
+                    onClick={() => {
+                        changeTheme();
+                    }}>
+                    <Body2>{darkMode ? "Light Mode" : "Dark Mode"}</Body2>
                 </div>
             </div>
         </>
@@ -103,5 +128,8 @@ const mapStateToProps = (state) => {
         darkMode: state.preference.darkMode
     };
 };
+const actionCreators = {
+    changeTheme: preferenceActions.changeTheme
+};
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, actionCreators)(Header);

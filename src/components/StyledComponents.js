@@ -147,6 +147,7 @@ export const WrapperDiv = styled.div`
     display: flex;
     height: ${({ height }) => height};
     width: ${({ width }) => width};
+    max-width: ${({ maxWidth }) => maxWidth};
     flex: ${({ flex }) => flex};
     flex-direction: ${({ flexDirection }) => flexDirection};
     ${({ margin }) =>

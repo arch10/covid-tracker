@@ -1,15 +1,21 @@
 import React from "react";
-import Dashboard from "./pages/Dashboard";
 import { connect } from "react-redux";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles, lightTheme, darkTheme } from "./components";
+import { GlobalStyles, lightTheme, darkTheme, Header } from "./components";
+import { Footer } from "./fragments";
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "./Routes";
 
 function App({ darkMode }) {
     return (
-        <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-            <GlobalStyles />
-            <Dashboard />
-        </ThemeProvider>
+        <Router>
+            <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+                <GlobalStyles />
+                <Header />
+                <Routes />
+                <Footer />
+            </ThemeProvider>
+        </Router>
     );
 }
 const mapStateToProps = (state) => {

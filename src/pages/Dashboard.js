@@ -8,7 +8,6 @@ import loadingAnimation from "../assets/animations/loading.json";
 import { dataActions, preferenceActions } from "../redux/actions";
 import { DataSelector, TableSection, Footer } from "../fragments";
 import {
-    Header,
     Card,
     Graph,
     Body1,
@@ -67,7 +66,9 @@ function Dashboard({ covidData, getData, preference, changeActiveTab }) {
     const { data, error, loading } = covidData;
 
     useEffect(() => {
-        getData();
+        if (!data) {
+            getData();
+        }
     }, [getData]);
 
     const theme = useMemo(() => {
@@ -81,7 +82,6 @@ function Dashboard({ covidData, getData, preference, changeActiveTab }) {
     const loadDataComponents = () => {
         return (
             <WrapperDiv flexDirection="column">
-                <Header />
                 <WrapperDiv
                     alignItems="center"
                     justifyContent="center"
@@ -181,7 +181,6 @@ function Dashboard({ covidData, getData, preference, changeActiveTab }) {
                     </>
                 )}
                 <TableSection data={data.stateWise} theme={theme} />
-                <Footer />
             </WrapperDiv>
         );
     };
