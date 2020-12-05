@@ -33,6 +33,10 @@ export const Header5 = styled.h5`
         font-size: 18px;
         line-height: 20px;
     }
+    @media only screen and (max-width: 400px) {
+        font-size: 16px;
+        line-height: 18px;
+    }
 `;
 
 export const Header4 = styled.h5`
@@ -45,6 +49,10 @@ export const Header4 = styled.h5`
     @media only screen and (max-width: 460px) {
         font-size: 22px;
         line-height: 24px;
+    }
+    @media only screen and (max-width: 400px) {
+        font-size: 18px;
+        line-height: 20px;
     }
 `;
 
@@ -66,6 +74,11 @@ export const Body2 = styled.h5`
         font-size: 13px;
         line-height: 15px;
         letter-spacing: 0.25px;
+    }
+    @media only screen and (max-width: 400px) {
+        font-size: 11px;
+        line-height: 12px;
+        letter-spacing: 0.1px;
     }
 `;
 
@@ -90,6 +103,11 @@ export const Body1 = styled.h5`
         letter-spacing: 0.1px;
         font-weight: 600;
     }
+    @media only screen and (max-width: 400px) {
+        font-size: 11px;
+        line-height: 12px;
+        letter-spacing: 0.1px;
+    }
 `;
 
 export const Caption = styled.h5`
@@ -103,6 +121,11 @@ export const Caption = styled.h5`
     @media only screen and (max-width: 460px) {
         font-size: 10px;
         line-height: 12px;
+    }
+    @media only screen and (max-width: 400px) {
+        font-size: 8px;
+        line-height: 10px;
+        letter-spacing: 0.15px;
     }
 `;
 
@@ -179,6 +202,10 @@ export const CardWrapper = styled(WrapperDiv)`
         height: 140px;
         width: 230px;
     }
+    @media only screen and (max-width: 400px) {
+        height: 120px;
+        width: 200px;
+    }
 `;
 
 export const SwitchItem = styled.div`
@@ -242,6 +269,10 @@ export const TableItem = styled.div`
     }
     @media only screen and (max-width: 460px) {
         max-width: ${({ state }) => (state ? 100 : 80)}px;
+    }
+    @media only screen and (max-width: 400px) {
+        max-width: ${({ state }) => (state ? 85 : 70)}px;
+        padding: 4px;
     }
 `;
 
