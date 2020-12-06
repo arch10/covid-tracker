@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ReactComponent as Logo } from "../assets/icons/logo.svg";
 import { StyledNav, Header6, Body2 } from "./StyledComponents";
-import { useLocation, NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { DarkModeSwitch } from "./DarkModeSwitch";
 import { Home, PlusSquare, Info } from "react-feather";
 import { preferenceActions } from "../redux/actions";
@@ -27,7 +27,6 @@ const NavHeader = styled(Header6)`
 
 function Header({ darkMode, changeTheme }) {
     const [open, setOpen] = useState(false);
-    const location = useLocation();
     return (
         <>
             <StyledNav fixed="top">
@@ -85,32 +84,32 @@ function Header({ darkMode, changeTheme }) {
                     { dark: darkMode },
                     { hide: !open }
                 ])}>
-                <div
-                    onClick={() => {
-                        setOpen(false);
-                        if (location.pathname !== "/") {
-                            window.location.href = "/";
-                        }
-                    }}>
-                    <Body2>Home</Body2>
+                <div>
+                    <Link
+                        onClick={() => {
+                            setOpen(false);
+                        }}
+                        to="/">
+                        <Body2>Home</Body2>
+                    </Link>
                 </div>
-                <div
-                    onClick={() => {
-                        setOpen(false);
-                        if (location.pathname !== "/vaccine") {
-                            window.location.href = "/vaccine";
-                        }
-                    }}>
-                    <Body2>Vaccine</Body2>
+                <div>
+                    <Link
+                        onClick={() => {
+                            setOpen(false);
+                        }}
+                        to="/vaccine">
+                        <Body2>Vaccine</Body2>
+                    </Link>
                 </div>
-                <div
-                    onClick={() => {
-                        setOpen(false);
-                        if (location.pathname !== "/about") {
-                            window.location.href = "/about";
-                        }
-                    }}>
-                    <Body2>About</Body2>
+                <div>
+                    <Link
+                        onClick={() => {
+                            setOpen(false);
+                        }}
+                        to="/about">
+                        <Body2>About</Body2>
+                    </Link>
                 </div>
                 <div
                     onClick={() => {

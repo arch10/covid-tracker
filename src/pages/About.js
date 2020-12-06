@@ -46,12 +46,18 @@ function About() {
                     I would like to thank the Covid19India Team for the valuable
                     data that is being used in this project. This project uses
                     the daily and historical case data exposed by{" "}
-                    <a href="https://api.covid19india.org/" target="_blank">
+                    <a
+                        href="https://api.covid19india.org/"
+                        target="_blank"
+                        rel="noreferrer">
                         Covid-19India
                     </a>{" "}
                     Team. This data is cleaned and then put together in a proper
                     format. The vaccine data is exposed by{" "}
-                    <a href="https://disease.sh/" target="_blank">
+                    <a
+                        href="https://disease.sh/"
+                        target="_blank"
+                        rel="noreferrer">
                         disease.sh
                     </a>{" "}
                     via RAPS (Regulatory Affairs Professional Society). This
