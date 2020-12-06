@@ -45,4 +45,5 @@ This project is an open-sourced react project hosted on github. Feel free to cre
 ### License
 
 ![GitHub](https://img.shields.io/github/license/arch10/covid-tracker)
+
 Usage is provided under the [MIT License](./LICENSE). See LICENSE for the full details.
