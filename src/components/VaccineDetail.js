@@ -31,7 +31,7 @@ function VaccineDetail({ darkMode, item, index }) {
             <Accordion.Toggle
                 as={Card.Header}
                 eventKey={index + 1}
-                className="card header">
+                className={classNames(["card", "header", { dark: darkMode }])}>
                 <b>{item.candidate}</b>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey={index + 1}>
