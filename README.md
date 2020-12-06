@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+## Covid Tracker India
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+![React App](https://aleen42.github.io/badges/src/react.svg)   ![React Router](https://aleen42.github.io/badges/src/router.svg)
 
-In the project directory, you can run:
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/arch10/covid-tracker/Deployment/main?label=Deployment)  ![GitHub top language](https://img.shields.io/github/languages/top/arch10/covid-tracker)  ![GitHub issues](https://img.shields.io/github/issues-raw/arch10/covid-tracker)  [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Farch10%2Fcovid-tracker&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
-### `yarn start`
+![image](./docs/images/11.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![image](./docs/images/12.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Introduction
 
-### `yarn test`
+**Covid Tracker India** is a statistical and data tracking project which aims at tracking the Covid-19 pandemic in India. This project gets the fresh JSON data collected from multiple sources and shows it in a meaningful way. The data is compiled for use accordingly. The current data shown as card of total and daily cases for confirmed, active, recovered and death due to Covid-19. These cards are clickable entities which when clicked switches the graph mode. The graphical representation of these data is done using a Line Chart. This chart shows the data from the beginning of the pandemic. There is an option to adjust this time frame to draw the graph for last 3 months or last 1 month. This line cart helps in better understanding of the Covid19 impact in India in recent times.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The state wise data is also listed in a form of table which shows the total and daily cases of covid-19 in a state or union territory. The table also shows the change in the number of cases from the day before. If the overall cases increases it shows the number with an up arrow, else it shows it with a down arrow. These depiction helps to identify the current increase or decrease of the covid-19 cases in any state or union territory.
 
-### `yarn build`
+This project also shows the data about the upcoming vaccines and their current status. The vaccine status is shown in a bar chart. More details on each vaccine is provided below the chart.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The project comes with an inbuilt dark mode, which can be turned on easily using the switch on the top right corner of the screen. If you are using a mobile, open the hamburger menu to switch between dark mode and light mode.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Motivation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Covid-19 Pandemic affects us all. Today it's someone else who is getting infected; tomorrow it could be us. We need to prevent the spread of this virus. These statistical representations helps spread awareness of Covid-19. Please follow the Government guidelines to minimize the spread of this virus. Lets be responsible around everyone and in social areas. Please maintain social distancing. Avoid social gathering. Keep 6ft, distance from people 🧍↔️🧍. Always remember to wash your hands regularly with soap 🧼👏. Always wear a mask 😷. Try not to touch your face 🚫🤦.
 
-### `yarn eject`
+### Sources
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-   This project collects the daily and total data from the APIs exposed by [Covid19India Team](https://api.covid19india.org/).
+-   This project get the vaccine data from [disease.sh](https://disease.sh/) via RAPS (Regulatory Affairs Professional Society).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Build
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Use the below commands to get started.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```sh
+yarn install
+yarn start
+```
 
-## Learn More
+### Contribution
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This project is an open-sourced react project hosted on github. Feel free to create any issues in the repository and get started with any bugs fixes, features and enhancements. Please fork the repository and work on the changes. Once the changes are done, please create a Pull Request with the master branch. If the changes are satisfactory then the branch can be merged. Any push to the master branch will then trigger the deployment action using github actions. This will automatically install, build and deploy the changes to the `gh-pages` branch. 🚀😎
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### License
 
-### Code Splitting
+![GitHub](https://img.shields.io/github/license/arch10/covid-tracker)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Usage is provided under the [MIT License](./LICENSE). See LICENSE for the full details.
