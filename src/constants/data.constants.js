@@ -1,5 +1,0 @@
-export const dataConstants = {
-    DATA_PROGRESS: "DATA_PROGRESS",
-    DATA_SUCCESS: "DATA_SUCCESS",
-    DATA_FAILURE: "DATA_FAILURE"
-};
