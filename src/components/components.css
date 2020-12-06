@@ -81,6 +81,32 @@
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
+.card.header {
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.card.dark {
+    background-color: #1a2f34;
+}
+
+.card {
+    background-color: #fcfcfc;
+    transition: all 0.2s ease;
+}
+
+.card.body p {
+    font-size: 14px;
+}
+
+.card.body {
+    background-color: #ebebeb;
+}
+
+.card.body.dark {
+    background-color: #0e2428;
+}
+
 @media only screen and (max-width: 1200px) {
     .desktop {
         width: 30%;
@@ -105,5 +131,11 @@
     }
     .hide {
         display: none;
+    }
+    .card.body p {
+        font-size: 12px;
+    }
+    .card.header {
+        font-size: 12px;
     }
 }

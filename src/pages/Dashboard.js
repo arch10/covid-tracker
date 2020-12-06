@@ -6,7 +6,7 @@ import { X } from "react-feather";
 import errorAnimation from "../assets/animations/error.json";
 import loadingAnimation from "../assets/animations/loading.json";
 import { dataActions, preferenceActions } from "../redux/actions";
-import { DataSelector, TableSection, Footer } from "../fragments";
+import { DataSelector, TableSection } from "../fragments";
 import {
     Card,
     Graph,
